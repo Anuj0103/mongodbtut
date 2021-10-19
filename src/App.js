@@ -43,7 +43,35 @@ const createDocument = async () => {
       active: true,
     });
 
-    const result = await reactPlaylist.save();
+    const jsPlaylist = new Playlist({
+      name: 'JavaScript',
+      ctype: 'Front End',
+      videos: 50,
+      author: 'Anuj Dhingra',
+      active: true,
+    });
+
+    const mongoPlaylist = new Playlist({
+      name: 'Mongoose JS',
+      ctype: 'Database',
+      videos: 50,
+      author: 'Anuj Dhingra',
+      active: true,
+    });
+
+    const expresssplayPlaylist = new Playlist({
+      name: 'Express JS',
+      ctype: 'Back End',
+      videos: 5,
+      author: 'Anuj Dhingra',
+      active: true,
+    });
+
+    const result = await Playlist.insertMany([
+      jsPlaylist,
+      mongoPlaylist,
+      expresssplayPlaylist,
+    ]);
     console.log(result);
   } catch (err) {
     console.log(err);
